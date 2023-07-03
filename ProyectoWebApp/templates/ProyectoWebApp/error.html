@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>Problemas tecnicos</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .error-container {
+        max-width: 400px;
+        margin: 100px auto;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .error-container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .error-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    i{
+        font-size: 124px;
+         color: red;
+    }
+
+</style>
+<body>
+    
+    <div class="error-container">
+        <i class="fas fa-server"></i>
+        <h1>Problemas técnicos</h1>
+        <p>{{ error }}</p>
+        <!-- <p>{{e}}</p> -->
+    </div>
+</body>
+</html>

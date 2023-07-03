@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px ;
+    /* padding-left: 5%;
+    padding-right: 5%; */
+    font-weight: bold;
+    background-color: #121212;
+    height: 100px;
+    
+    
+      
+}
+
+ul li{
+    display: inline-block;
+    padding: 0px 20px;    
+}
+
+a{
+    color: white;
+    text-decoration:none ;
+}
+
+a:hover{
+    color: rgb(144,30,58);
+}
+
+body{
+    background-color: #181818;
+}
+
+
+
+
+input{
+    height:30px ;
+    border-radius: 10px ;
+    font-size: 20px;
+}
+
+

@@ -1,0 +1,100 @@
+{% extends 'ProyectoWebApp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- contenido -->
+
+<br>
+
+<div class="container">   
+
+    <div class="row">
+        <div class="col-lg-6">
+            
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            {% if message %}
+                {% for m in message %}
+                    <script>
+                        swal.fire({
+                            "title":"Por favor, completa todos los campos del formulario.",
+                            // "text":"{{aler_message}}",
+                            "icon":"warning"
+                        })
+                    </script>
+                {%endfor%} 
+            {% elif men %}
+            
+            {% for me in men %}
+            <script>
+                swal.fire({
+                    "title":"Enviado correctamente",
+                    // "text":"{{aler_message}}",
+                    "icon":"success"
+                })
+            </script>
+            {%endfor%}           
+            {% endif %}
+            <h3>Contáctanos</h3>
+            <form action="/contacto/" method="POST"> {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombre">Nombres</label>
+                    <input type="text" class="form-control" id="nombre" name="nombres">
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellidos</label>
+                    <input type="text" class="form-control" id="apellido" name="apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea class="form-control" id="mensaje" rows="3" name="mensaje"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+            
+        </div>       
+        <style>
+            .col-lg-6{
+                /* Agrega aquí los estilos que deseas aplicar cuando se hace hover */
+                background-color: rgb(35, 38, 46) !important;
+                color: white !important;
+                border-radius: 5px;
+                
+
+            }
+            
+
+            .col-lg-6:hover {
+                /* Agrega aquí los estilos que deseas aplicar cuando se hace hover */
+                background-color: #f0f0f0;
+                color: #000;
+                border-radius: 5px;
+            }
+        </style>
+        
+        <div class="col-lg-6">
+            
+            <h4>Más información:</h4>
+            <ul class="list-unstyled">
+                <li><i class="fas fa-map-marker-alt"></i> Nombre calle</li>
+                <li><i class="fas fa-mobile"></i> 967 473 498</li>
+                <li><i class="fas fa-envelope"></i> munay@gmail.com</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima voluptates adipisci fugiat, enim aliquam earum rerum aspernatur repellat officiis quia.</p>
+            <p>Grupo munay</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}        
+    
+
+

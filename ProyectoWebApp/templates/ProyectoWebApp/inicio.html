@@ -1,0 +1,47 @@
+{% extends 'ProyectoWebApp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    .gallery-container {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .gallery {
+    display: flex;
+    animation: marquee 15s linear infinite; /* Ajusta la duración y velocidad según tus necesidades */
+    
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .gallery img {
+    width: 100%;
+    height: auto;
+  }
+</style>
+<!-- contenido -->
+
+
+
+<div class="gallery-container">
+    <div class="gallery">
+      <img src="{% static 'ProyectoWebApp/img/portada1.png' %}">
+      <img src="{% static 'ProyectoWebApp/img/portada2.png' %}">
+      <img src="{% static 'ProyectoWebApp/img/portada3.png' %}">
+      
+      <!-- Agrega más imágenes aquí -->
+    </div>
+  </div>
+
+{% endblock %}
+    

@@ -1,0 +1,62 @@
+{% extends 'ProyectoWebApp/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- contenido -->
+<style>
+    .center-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: baseline;
+        height: 100vh;
+        border: solid 2px color(#181818) !important;
+        margin-top: -45px;
+    }  
+    .container {
+        border: 1px solid #181818; /* Establece el borde de 2 píxeles de grosor y color #181818 */
+        border-radius: 10px;
+        width: 415px;
+        height: 610px;
+        margin-top: 5px ;
+    } 
+
+    input{
+        border-radius: 6px;
+    }
+</style>
+
+
+
+<div class="container">
+    <form class="center-form" method="POST">
+    
+        {% csrf_token %}
+    
+        {{form}}  
+          
+        <button type="submit" class="btn btn-success">Registrate</button>
+    </form>
+</div>
+
+
+
+<!-- {% if form %}   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            "title": "Registro exitoso",
+            // "text":"{{aler_message}}",
+            "icon": "success"
+        });
+    </script>
+{% endif %} -->
+
+
+
+
+
+{% endblock %}

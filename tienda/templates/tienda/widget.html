@@ -1,0 +1,74 @@
+{% extends 'ProyectoWebApp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<style>
+    th,
+    td {
+        color: black !important;
+    }
+</style>
+<table class="table table-bordered" style="color: white;">
+    <thead>
+        <tr>
+            <th colspan="4" class="text-center">Carro compras</th>
+        </tr>
+        <tr>
+            <th>Nombre Producto</th>
+            <th>Cantidad</th>
+            <th>Acción</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if request.session.carro.items %}
+        {% for key, value in request.session.carro.items %}
+        <tr class="text-center">
+            <td>{{value.nombre}}</td>
+            <td>{{value.cantidad}}</td>
+            <td>
+
+                <a href="{% url 'carro:sumar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+                <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-success">-</a><br>
+                {{value.precio}}
+
+            </td>
+            <td><a href="{% url 'carro:eliminar' value.producto_id %}" class="btn btn-sm btn-danger">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="4">
+                <div class="alert alert-danger text-center">
+                    Sin productos
+                </div>
+            </td>
+        </tr>
+        {% endif %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <p style="color: black;">Total: {{importe_total_carro}}</p>
+            </td>
+            {% if request.session.carro.items %}
+            <tr>
+                <td colspan="4" style="text-align: center;">
+                    <a href="{% url 'procesar_pedido'%}" class="btn btn-success">Hacer pedido</a>
+                </td>
+            </tr>
+            {% endif %}
+        </tr>
+    </tfoot>
+</table>
+{% else %}  
+<!-- <div class="alert alert-danger text-center">INICIAR SESION PARA VER CARRITO</div>   -->
+    {% url 'logear' as redirect_url %}    
+    {% if redirect_url %}
+         <script>window.location.href = "{{ redirect_url }}";</script>
+    {% endif %}
+{% endif %}
+{% endblock %}

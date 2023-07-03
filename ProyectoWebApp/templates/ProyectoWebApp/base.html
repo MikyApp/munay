@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <title>Inicio</title>
+
+  <!--  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <!-- ANIMATE CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <!-- CUSTOM CSS -->
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'ProyectoWepApp/vendor/bootstrap.min.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+  .nav-link {
+    color: white !important;
+
+  }
+
+  .nav-link {
+    font-weight: bold !important;
+    
+  }
+
+  .carrito {
+            font-size: 1.5em !important; /* Ajusta el tamaño del icono según tus preferencias */
+            
+        }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="{% url 'inicio' %}"><img src="{% static 'ProyectoWebApp/img/munay.png' %}"
+          width="170px"></a>
+      <button class="navbar-toggler" type="submit" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'inicio' %}">INICIO</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contactos' %}">CONTACTOS</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tienda' %}">PRODUCTOS</a>
+          </li>
+          <li class="nav-item">
+            <div>
+              {% if importe_total_carro > 0.0 %}
+              <a class="nav-link" aria-current="page" href="{% url 'carro' %}"><i style="color: rgb(100, 22, 48)"  class="fas fa-shopping-cart carrito"></i></a>
+              {% else %}
+                <a class="nav-link" aria-current="page" href="{% url 'carro' %}"><i  class="fas fa-shopping-cart carrito"></i></a>
+              {% endif %}
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin:index' %}">INTRANET</a>
+          </li>
+        </ul>
+        <form class="d-flex" method="POST"  action="{% url 'tienda' %}"> {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="prod">
+          <button class="btn btn-primary" type="submit" class="boton">Buscar</button>
+        </form>
+        <div>
+          <ul style="margin-top: 20px;">
+            <li><a href="{% url 'logear' %}"><i class="fas fa-user fa-2x" style="color: beige;"></i></a></i></li>
+            {% if user.is_authenticated %}              
+              <p style="color: aliceblue; text-align: center; ">{{user.username}} &nbsp; &nbsp; <a style="color: aliceblue; text-decoration: none" href="{% url 'cerrar_sesion' %}" >Cerrar sesion</a> </p> 
+            {% else %}
+              <a href="{% url 'logear' %}" style="color: aliceblue; text-align: center; text-decoration: none">Login</a> 
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+{% block content%}
+  <!-- content -->
+
+{% endblock %}
+
+
+
+<style>
+  .footer {
+    background-color: #f2f9f6;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
+  .social-icons a {
+    color: #000;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .social-icons a:hover {
+    color: #557;
+  }
+  
+  .social-icons i {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+</style>
+
+<br>
+<br>
+
+
+<footer class="footer">
+  <div class="social-icons">
+    <a href="https://wa.me/967473498" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/tu_usuario" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/tu_usuario" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@tu_usuario" target="_blank"><i class="fab fa-tiktok"></i></a>
+    
+  </div>
+  <p>&copy; 2023 Grupo Munay.  Todos los derechos reservados.</p>
+</footer>
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <!-- Footter -->
+</body>
+
+</html>

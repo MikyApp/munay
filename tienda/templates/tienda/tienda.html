@@ -1,0 +1,77 @@
+{% extends 'ProyectoWebApp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+  .card:hover {
+    /* Agrega aquí los estilos que deseas aplicar cuando se hace hover */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+</style>
+
+
+
+
+
+{% if productos %}
+<div class="container">
+
+  <div style="float: right;">
+
+
+  </div>
+
+  <div class="row">
+
+    {% for producto in productos %}
+    <div class="col-md-3">
+      <div class="card" style="margin: 10px 8px;">
+
+        <img src="{{producto.imagen.url}} " class="card-img-top">
+        <div class="card-body" style="text-align: center;">
+          <h6 class="card-title">{{producto.nombre}}</h6>
+          <p class="card-text"> &nbsp;S/.{{producto.precio}}</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar al carrito</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+   <h1 class="alert alert-danger text-center">No se encontro el producto</h1>
+  </div>
+</div>
+{% endif %}
+<!-- <div class="container">
+
+    <div style="float: right;">
+        
+       
+    </div>
+
+    <div class="row">
+  
+      {% for producto in productos %}
+      <div class="col-md-3">
+        <div class="card" style="margin: 10px 8px;">
+  
+          <img src="{{producto.imagen.url}} " class="card-img-top">
+          <div class="card-body" style="text-align: center;">
+            <h6 class="card-title">{{producto.nombre}}</h6>
+            <p class="card-text"> &nbsp;S/.{{producto.precio}}</p>
+          </div>
+          <div class="card-footer text-center">
+                <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-success">Agregar al carrito</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div> -->
+
+
+{% endblock %}
